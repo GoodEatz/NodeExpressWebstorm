@@ -4,20 +4,19 @@
     <option name="serverConfigurations">
       <list>
         <ServerConfiguration>
-          <option name="authenticationDatabase" value="heroku_rk6s2bvj" />
+          <option name="authenticationDatabase" value="heroku_p4pgb3n7" />
           <option name="authenticationMechanism" value="SCRAM-SHA-1" />
-          <option name="label" value="Project 2 MongoDB on mLab" />
-          <option name="password" value="protoman2037" />
+          <option name="password" value="applejim" />
           <option name="serverUrls">
             <list>
-              <option value="ds259085.mlab.com:59085" />
+              <option value="ds163745.mlab.com:63745" />
             </list>
           </option>
           <option name="sshTunnelingConfiguration">
             <SshTunnelingConfiguration />
           </option>
-          <option name="userDatabase" value="heroku_rk6s2bvj" />
-          <option name="username" value="GoodEatz" />
+          <option name="userDatabase" value="heroku_p4pgb3n7" />
+          <option name="username" value="KennyTruong" />
         </ServerConfiguration>
       </list>
     </option>
