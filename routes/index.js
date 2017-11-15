@@ -16,10 +16,10 @@ router.get('/mongodb', function (request, response) {
         if(err) throw err;
 
         //get collection of orders
-        var Orders = db.collection('Orders');
+        var Orders = db.collection('ORDERS');
 
         //get all Orders
-        Orders.find({ }).sort({ CUSTOMER_ID: 1 }).toArray(function (err, docs) {
+        Orders.find({ }).sort({ name: 1 }).toArray(function (err, docs) {
 
             if(err) throw err;
 
