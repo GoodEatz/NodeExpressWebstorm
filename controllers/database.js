@@ -1,5 +1,5 @@
 var mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI || 'mongodb://GoodEatz:trooper1@ds259085.mlab.com:59085/heroku_rk6s2bvj';
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://KennyTruong:applejim@ds163745.mlab.com:63745/heroku_p4pgb3n7';
 
 module.exports.getAllOrders =  function (request, response) {
 
