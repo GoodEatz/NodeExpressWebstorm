@@ -19,7 +19,7 @@ router.get('/mongodb', function (request, response) {
         var Orders = db.collection('Orders');
 
         //get all Orders
-        Orders.find({ }).sort({ name: 1 }).toArray(function (err, docs) {
+        Orders.find({ }).sort({ CUSTOMER_ID: 1 }).toArray(function (err, docs) {
 
             if(err) throw err;
 
