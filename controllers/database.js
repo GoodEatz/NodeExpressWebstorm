@@ -70,7 +70,9 @@ module.exports.storeData =  function (req, res) {
             SHIPPING_ZIP: shippingZipCode
         };
 
-
+        Shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });
 
         //billing collection operation
         var billingData = {
@@ -97,10 +99,10 @@ module.exports.storeData =  function (req, res) {
         };
 
 
-        Customers.insertOne(customerData);
-        Shipping.insertOne(shippingData, function (err, result) {
+        Customers.insertOne(customerData, function (err, result)  {
             if (err) throw err;
         });
+
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
