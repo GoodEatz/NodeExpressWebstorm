@@ -11,23 +11,23 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 
-module.exports.storeData =  function (request, response) {
+module.exports.storeData =  function (req, res) {
 
-    var billingName = request.body.billingName;
-    var billingStreet = request.body.billingAddress;
-    var billingCity = request.body.billingCity;
-    var billingState = request.body.billingState;
-    var billingZipCode = request.body.billingZipCode;
-    var shippingStreet = request.body.shippingAddress;
-    var shippingCity = request.body.shippingCity;
-    var shippingState = request.body.shippingState;
-    var shippingZipCode = request.body.shippingZipCode;
-    var email = request.body.email;
-    var product_vector = request.body.products;
-    var cardNumber = request.body.cardNumber;
-    var expirationDate = request.body.expirationDate;
-    var securityCode = request.body.securityCode;
-    var cardType = request.body.CCcompany;
+    var billingName = req.body.billingName;
+    var billingStreet = req.body.billingAddress;
+    var billingCity = req.body.billingCity;
+    var billingState = req.body.billingState;
+    var billingZipCode = req.body.billingZipCode;
+    var shippingStreet = req.body.shippingAddress;
+    var shippingCity = req.body.shippingCity;
+    var shippingState = req.body.shippingState;
+    var shippingZipCode = req.body.shippingZipCode;
+    var email = req.body.email;
+    var product_vector = req.body.products;
+    var cardNumber = req.body.cardNumber;
+    var expirationDate = req.body.expirationDate;
+    var securityCode = req.body.securityCode;
+    var cardType = req.body.CCcompany;
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;

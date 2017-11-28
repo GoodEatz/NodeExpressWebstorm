@@ -8,13 +8,11 @@ var path = require('path');
 var querystring = require('querystring');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
-var multer = require('multer');
-var upload = multer();
 
 //LOAD the various controllers
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb
 
-router.post('/', function (req, res) {
+router.post('/storeData', function (req, res) {
     console.log(req.body);
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
