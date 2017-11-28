@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 //LOAD the various controllers
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb
 
-router.post('/storeData', function (req, res) {
+router.post('/', function (req, res) {
     console.log(req.body);
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
