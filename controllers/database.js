@@ -59,7 +59,6 @@ module.exports.storeData =  function (req, res) {
             EMAIL: email
         };
 
-        Customers.insertOne(customerData);
 
         //shipping collection operation
         var shippingData = {
@@ -71,9 +70,7 @@ module.exports.storeData =  function (req, res) {
             SHIPPING_ZIP: shippingZipCode
         };
 
-        Shipping.insertOne(shippingData, function (err, result) {
-            if (err) throw err;
-        });
+
 
         //billing collection operation
         var billingData = {
@@ -85,9 +82,6 @@ module.exports.storeData =  function (req, res) {
             CREDITCARDSECURITYNUM: securityCode
         };
 
-        Billing.insertOne(billingData, function (err, result) {
-            if (err) throw err;
-        });
 
         //orders collection operation
         var date = new Date();
@@ -102,6 +96,14 @@ module.exports.storeData =  function (req, res) {
             ORDER_TOTAL: product_vector['total']
         };
 
+
+        Customers.insertOne(customerData);
+        Shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });
+        Billing.insertOne(billingData, function (err, result) {
+            if (err) throw err;
+        });
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
         });
