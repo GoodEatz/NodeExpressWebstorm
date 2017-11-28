@@ -12,6 +12,7 @@ router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
 router.use(upload.array());
 
+
 module.exports.storeData =  function (req, res) {
 
     var body = JSON.stringify(req.body);
@@ -58,9 +59,7 @@ module.exports.storeData =  function (req, res) {
             EMAIL: email
         };
 
-        Customers.insertOne(customerData, function (err, result) {
-            if (err) throw err;
-        });
+        Customers.insertOne(customerData, function (err, result) {});
 
         //shipping collection operation
         var shippingData = {
