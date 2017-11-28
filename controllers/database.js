@@ -80,7 +80,10 @@ module.exports.storeData =  function (req, result) {
             CREDITCARDEXP: expirationDate,
             CREDITCARDSECURITYNUM: securityCode
         };
-
+        
+        Billing.insertOne(billingData, function (err, result) {
+            if (err) throw err;
+        });
 
         //orders collection operation
         var date = new Date();
@@ -105,9 +108,7 @@ module.exports.storeData =  function (req, result) {
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
         });
-        Billing.insertOne(billingData, function (err, result) {
-            if (err) throw err;
-        });
+
 
 
 
