@@ -5,14 +5,14 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://KennyTruong:applejim@ds16
 
 
 var bodyParser = require('body-parser');
-var path = require('path');
-var querystring = require('querystring');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
+var path = require('path'); //to work with separators on any OS including Windows
+var querystring = require('querystring'); //for use in GET Query string of form URI/path?name=value
+router.use(bodyParser.json()); // for parsing application/json
+router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
 
 
 module.exports.storeData =  function (req, res) {
-
+/*
     var billingName = req.body.billingName;
     var billingStreet = req.body.billingAddress;
     var billingCity = req.body.billingCity;
@@ -28,7 +28,7 @@ module.exports.storeData =  function (req, res) {
     var expirationDate = req.body.expirationDate;
     var securityCode = req.body.securityCode;
     var cardType = req.body.CCcompany;
-
+*/
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
