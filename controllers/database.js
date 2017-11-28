@@ -36,17 +36,16 @@ module.exports.storeData =  function (req, result) {
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
-        var customerID = Math.floor((Math.random() * 1000000000000) + 1);
-        var billingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var ordersID = Math.floor((Math.random() * 1000000000000) + 1);
+        var customerID = Math.floor((Math.random() * 10000000) + 1);
+        var billingID = Math.floor((Math.random() * 10000000) + 1);
+        var shippingID = Math.floor((Math.random() * 10000000) + 1);
+        var ordersID = Math.floor((Math.random() * 10000000) + 1);
 
         //get collection of orders
         var Orders = db.collection('ORDERS');
         var Customers = db.collection('CUSTOMERS');
         var Billing = db.collection('BILLING');
         var Shipping = db.collection('SHIPPING');
-
 
         //customer collection operation
         var customerData = {
@@ -59,6 +58,9 @@ module.exports.storeData =  function (req, result) {
             EMAIL: email
         };
 
+        Customers.insertOne(customerData, function (err, result)  {
+            if (err) throw err;
+        });
 
         //shipping collection operation
         var shippingData = {
@@ -70,6 +72,9 @@ module.exports.storeData =  function (req, result) {
             SHIPPING_ZIP: shippingZipCode
         };
 
+        Shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });
 
         //billing collection operation
         var billingData = {
@@ -80,7 +85,7 @@ module.exports.storeData =  function (req, result) {
             CREDITCARDEXP: expirationDate,
             CREDITCARDSECURITYNUM: securityCode
         };
-        
+
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
@@ -101,16 +106,6 @@ module.exports.storeData =  function (req, result) {
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
         });
-
-        Customers.insertOne(customerData, function (err, result)  {
-            if (err) throw err;
-        });
-        Shipping.insertOne(shippingData, function (err, result) {
-            if (err) throw err;
-        });
-
-
-
 
         //close connection when your app is terminating.
         db.close(function (err) {
