@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 
 module.exports.storeData =  function (request, response) {
-/*
+
     var billingName = request.body.billingName;
     var billingStreet = request.body.billingAddress;
     var billingCity = request.body.billingCity;
@@ -28,7 +28,7 @@ module.exports.storeData =  function (request, response) {
     var expirationDate = request.body.expirationDate;
     var securityCode = request.body.securityCode;
     var cardType = request.body.CCcompany;
-*/
+
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
