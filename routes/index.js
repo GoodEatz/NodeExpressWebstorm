@@ -15,9 +15,8 @@ router.use(upload.array());
 //LOAD the various controllers
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb
 
-
+/*
 router.post('/storeData', function (req, res) {
-    console.log(req.body);
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
     var billingName = req.body.billingName;
@@ -36,7 +35,7 @@ router.post('/storeData', function (req, res) {
     var securityCode = req.body.securityCode;
     var cardType = req.body.CCcompany;
 })
-
+*/
 //CODE to route /storeData to appropriate  Controller function
 router.post('/storeData', controllerMongoCollection.storeData);
 

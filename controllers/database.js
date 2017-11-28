@@ -2,17 +2,20 @@ var express = require('express');
 var router = express.Router();
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://KennyTruong:applejim@ds163745.mlab.com:63745/heroku_p4pgb3n7';
-
+var multer = require('multer');
+var upload = multer();
 
 var bodyParser = require('body-parser');
 var path = require('path'); //to work with separators on any OS including Windows
 var querystring = require('querystring'); //for use in GET Query string of form URI/path?name=value
 router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
-
+router.use(upload.array());
 
 module.exports.storeData =  function (req, res) {
-/*
+
+    var body = JSON.stringify(req.body);
+    var params = JSON.stringify(req.params);
     var billingName = req.body.billingName;
     var billingStreet = req.body.billingAddress;
     var billingCity = req.body.billingCity;
@@ -28,7 +31,7 @@ module.exports.storeData =  function (req, res) {
     var expirationDate = req.body.expirationDate;
     var securityCode = req.body.securityCode;
     var cardType = req.body.CCcompany;
-*/
+
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
