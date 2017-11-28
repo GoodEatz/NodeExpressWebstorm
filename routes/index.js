@@ -14,7 +14,7 @@ var upload = multer();
 //LOAD the various controllers
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb
 
-router.post('/', function (req, res) {
+router.post('/mongodb', function (req, res) {
     console.log(req.body);
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
