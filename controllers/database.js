@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({extended: true})); // for parsing application/
 router.use(upload.array());
 
 
-module.exports.storeData =  function (req, res) {
+module.exports.storeData =  function (req, result) {
 
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
@@ -70,9 +70,6 @@ module.exports.storeData =  function (req, res) {
             SHIPPING_ZIP: shippingZipCode
         };
 
-        Shipping.insertOne(shippingData, function (err, result) {
-            if (err) throw err;
-        });
 
         //billing collection operation
         var billingData = {
@@ -98,17 +95,20 @@ module.exports.storeData =  function (req, res) {
             ORDER_TOTAL: product_vector['total']
         };
 
+        Orders.insertOne(ordersData, function (err, result) {
+            if (err) throw err;
+        });
 
         Customers.insertOne(customerData, function (err, result)  {
             if (err) throw err;
         });
-
+        Shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
-        Orders.insertOne(ordersData, function (err, result) {
-            if (err) throw err;
-        });
+
 
 
         //close connection when your app is terminating.
