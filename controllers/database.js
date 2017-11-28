@@ -59,7 +59,7 @@ module.exports.storeData =  function (req, res) {
             EMAIL: email
         };
 
-        Customers.insertOne(customerData, function (err, result) {});
+        Customers.insertOne(customerData);
 
         //shipping collection operation
         var shippingData = {
