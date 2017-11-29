@@ -58,9 +58,9 @@ module.exports.storeData =  function (req, res, nxt) {
             EMAIL: email
         };
 
-        Customers.insertOne(customerData, function (err, result)  {
+        try{ Customers.insertOne(customerData, function (err, result)  {
             if (err) throw err;
-        });
+        });} catch (e) {}
 
         //shipping collection operation
         var shippingData = {
@@ -74,7 +74,7 @@ module.exports.storeData =  function (req, res, nxt) {
 
         try{Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
-        });}
+        });} catch (e) {}
 /*
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
