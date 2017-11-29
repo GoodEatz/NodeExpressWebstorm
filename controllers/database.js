@@ -59,7 +59,7 @@ module.exports.storeData =  function (req, res, nxt) {
         };
 
         try{ Customers.insertOne(customerData, function (err, result)  {
-            if (err) throw err;
+            //if (err) throw err;
         });} catch (e) {}
 
         //shipping collection operation
@@ -73,7 +73,7 @@ module.exports.storeData =  function (req, res, nxt) {
         };
 
         try{Shipping.insertOne(shippingData, function (err, result) {
-            if (err) throw err;
+            //if (err) throw err;
         });} catch (e) {}
 /*
         Shipping.insertOne(shippingData, function (err, result) {
