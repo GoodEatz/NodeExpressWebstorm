@@ -34,7 +34,7 @@ module.exports.storeData =  function (req, res, nxt) {
     var cardType = req.body.CCcompany;
 
     var date = new Date();
-    var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
+    var current_date = (date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
