@@ -33,6 +33,9 @@ module.exports.storeData =  function (req, res, nxt) {
     var securityCode = req.body.securityCode;
     var cardType = req.body.CCcompany;
 
+    var date = new Date();
+    var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
+
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
 
@@ -87,11 +90,11 @@ module.exports.storeData =  function (req, res, nxt) {
             CREDITCARDEXP: expirationDate,
             CREDITCARDSECURITYNUM: securityCode
         };
-/*
+
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
-*/
+
 /*        //orders collection operation
         var date = new Date();
         var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
