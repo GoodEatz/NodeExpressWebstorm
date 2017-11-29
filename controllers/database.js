@@ -131,7 +131,7 @@ module.exports.storeData =  function (req, result) {
             Shipping.insertOne(shippingData, function (err, res) {
                 Billing.insertOne(billingData, function (err, res) {
                     Orders.insertOne(Orders, function (err, res) {
-                        if (err) throw err;
+                        db.close();
                     })
                 })
             })
