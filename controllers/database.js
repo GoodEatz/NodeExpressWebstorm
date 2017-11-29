@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongodb = require('mongodb');
+var mongodb = require('mongodb').MongoClient;
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://KennyTruong:applejim@ds163745.mlab.com:63745/heroku_p4pgb3n7';
 var multer = require('multer');
 var upload = multer();
