@@ -95,7 +95,7 @@ module.exports.storeData =  function (req, res, nxt) {
             if (err) throw err;
         });
 
-/       //orders collection operation
+       //orders collection operation
         var ordersData = {
             _id: ordersID,
             CUSTOMER_ID: customerID,
