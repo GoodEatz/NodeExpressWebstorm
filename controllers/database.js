@@ -72,9 +72,7 @@ module.exports.storeData =  function (req, res, nxt) {
             SHIPPING_ZIP: shippingZipCode
         };
 
-        try{Shipping.insertOne(shippingData, function (err, result) {
-            //if (err) throw err;
-        });} catch (e) {}
+
 /*
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
@@ -89,11 +87,11 @@ module.exports.storeData =  function (req, res, nxt) {
             CREDITCARDEXP: expirationDate,
             CREDITCARDSECURITYNUM: securityCode
         };
-
+/*
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
-
+*/
         //orders collection operation
         var date = new Date();
         var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
@@ -106,11 +104,11 @@ module.exports.storeData =  function (req, res, nxt) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: product_vector['total']
         };
-
+/*
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
         });
-
+*/
         //close connection when your app is terminating.
         db.close(function (err) {
             if(err) throw err;
