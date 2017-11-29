@@ -34,7 +34,7 @@ module.exports.storeData =  function (req, res, nxt) {
     var cardType = req.body.CCcompany;
 
     var date = new Date();
-    var current_date = (date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
+    var current_date = ((date.getMonth() + 1 ) + "/" + date.getDate() + "/" + date.getFullYear());
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
@@ -101,8 +101,8 @@ module.exports.storeData =  function (req, res, nxt) {
             CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
-            DATE: current_date
-            //PRODUCT_VECTOR: product_vector,
+            DATE: current_date,
+            PRODUCT_VECTOR: product_vector
             //ORDER_TOTAL: product_vector['total']
         };
 
