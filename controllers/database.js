@@ -17,21 +17,21 @@ module.exports.storeData =  function (req, result) {
 
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
-    var billingName = req.body.user.billingName;
-    var billingStreet = req.body.user.billingAddress;
-    var billingCity = req.body.user.billingCity;
-    var billingState = req.body.user.billingState;
-    var billingZipCode = req.body.user.billingZipCode;
-    var shippingStreet = req.body.user.shippingAddress;
-    var shippingCity = req.body.user.shippingCity;
-    var shippingState = req.body.user.shippingState;
-    var shippingZipCode = req.body.user.shippingZipCode;
-    var email = req.body.user.email;
-    var product_vector = req.body.user.products;
-    var cardNumber = req.body.user.cardNumber;
-    var expirationDate = req.body.user.expirationDate;
-    var securityCode = req.body.user.securityCode;
-    var cardType = req.body.user.CCcompany;
+    var billingName = req.body.billingName;
+    var billingStreet = req.body.billingAddress;
+    var billingCity = req.body.billingCity;
+    var billingState = req.body.billingState;
+    var billingZipCode = req.body.billingZipCode;
+    var shippingStreet = req.body.shippingAddress;
+    var shippingCity = req.body.shippingCity;
+    var shippingState = req.body.shippingState;
+    var shippingZipCode = req.body.shippingZipCode;
+    var email = req.body.email;
+    var product_vector = req.body.products;
+    var cardNumber = req.body.cardNumber;
+    var expirationDate = req.body.expirationDate;
+    var securityCode = req.body.securityCode;
+    var cardType = req.body.CCcompany;
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
