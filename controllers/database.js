@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongodb = require('mongodb').MongoClient;
+var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://KennyTruong:applejim@ds163745.mlab.com:63745/heroku_p4pgb3n7';
 var multer = require('multer');
 var upload = multer();
@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({extended: true})); // for parsing application/
 router.use(upload.array());
 
 
-module.exports.storeData =  function (req, result) {
+module.exports.storeData =  function (req, res, nxt) {
 
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
@@ -110,6 +110,7 @@ module.exports.storeData =  function (req, result) {
         //close connection when your app is terminating.
         db.close(function (err) {
             if(err) throw err;
+            res.send("Hello");
         });
 
 
