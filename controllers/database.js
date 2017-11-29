@@ -17,21 +17,21 @@ module.exports.storeData =  function (req, result) {
 
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
-    var billingName = req.body.billingName;
-    var billingStreet = req.body.billingAddress;
-    var billingCity = req.body.billingCity;
-    var billingState = req.body.billingState;
-    var billingZipCode = req.body.billingZipCode;
-    var shippingStreet = req.body.shippingAddress;
-    var shippingCity = req.body.shippingCity;
-    var shippingState = req.body.shippingState;
-    var shippingZipCode = req.body.shippingZipCode;
-    var email = req.body.email;
-    var product_vector = req.body.products;
-    var cardNumber = req.body.cardNumber;
-    var expirationDate = req.body.expirationDate;
-    var securityCode = req.body.securityCode;
-    var cardType = req.body.CCcompany;
+    var billingName = req.body.user.billingName;
+    var billingStreet = req.body.user.billingAddress;
+    var billingCity = req.body.user.billingCity;
+    var billingState = req.body.user.billingState;
+    var billingZipCode = req.body.user.billingZipCode;
+    var shippingStreet = req.body.user.shippingAddress;
+    var shippingCity = req.body.user.shippingCity;
+    var shippingState = req.body.user.shippingState;
+    var shippingZipCode = req.body.user.shippingZipCode;
+    var email = req.body.user.email;
+    var product_vector = req.body.user.products;
+    var cardNumber = req.body.user.cardNumber;
+    var expirationDate = req.body.user.expirationDate;
+    var securityCode = req.body.user.securityCode;
+    var cardType = req.body.user.CCcompany;
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
@@ -57,11 +57,11 @@ module.exports.storeData =  function (req, result) {
             ZIP: billingZipCode,
             EMAIL: email
         };
-/*
+
         Customers.insertOne(customerData, function (err, result)  {
             if (err) throw err;
         });
-*/
+
         //shipping collection operation
         var shippingData = {
             _id: shippingID,
@@ -71,11 +71,11 @@ module.exports.storeData =  function (req, result) {
             SHIPPING_STATE: shippingState,
             SHIPPING_ZIP: shippingZipCode
         };
-/*
+
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
         });
-*/
+
         //billing collection operation
         var billingData = {
             _id: billingID,
@@ -85,11 +85,11 @@ module.exports.storeData =  function (req, result) {
             CREDITCARDEXP: expirationDate,
             CREDITCARDSECURITYNUM: securityCode
         };
-/*
+
         Billing.insertOne(billingData, function (err, result) {
             if (err) throw err;
         });
-*/
+
         //orders collection operation
         var date = new Date();
         var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
@@ -102,47 +102,16 @@ module.exports.storeData =  function (req, result) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: product_vector['total']
         };
-/*
+
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
         });
-*/
-/*
-        Customers.insertOne(user, function(err, res){
-            var customerId = res.insertedId;
-            Billing.customerId = customerId;
-            db.collection("billing").insertOne(billing, function(err, res){
-                var billingId = res.insertedId;
-                db.collection("shipping").insertOne(shipping, function(err, res){
-                    var shippingId = res.insertedId;
-                    order.customerId = customerId;
-                    order.billingId = billingId;
-                    order.shippingId = shippingId;
-                    db.collection("orders").insertOne(order, function(err, res){
-                        db.close();
-                        //response.render("orders.ejs", {orders: req.body.order, user: req.body.user, totalCost: totalWithoutTax});
-                    })
-                })
-            })
-        })
-*/
 
-        Customers.insertOne(customerData, function (err, res) {
-            Shipping.insertOne(shippingData, function (err, res) {
-                Billing.insertOne(billingData, function (err, res) {
-                    Orders.insertOne(Orders, function (err, res) {
-                        db.close();
-                    })
-                })
-            })
-        })
-
-
- /*       //close connection when your app is terminating.
+        //close connection when your app is terminating.
         db.close(function (err) {
             if(err) throw err;
         });
 
-*/
+
     });//end of connect
 };//end function+
