@@ -95,9 +95,7 @@ module.exports.storeData =  function (req, res, nxt) {
             if (err) throw err;
         });
 
-/*        //orders collection operation
-        var date = new Date();
-        var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
+/       //orders collection operation
         var ordersData = {
             _id: ordersID,
             CUSTOMER_ID: customerID,
@@ -107,12 +105,12 @@ module.exports.storeData =  function (req, res, nxt) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: product_vector['total']
         };
-*/
-/*
+
+
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
         });
-*/
+
         //close connection when your app is terminating.
         db.close(function (err) {
             if(err) throw err;
