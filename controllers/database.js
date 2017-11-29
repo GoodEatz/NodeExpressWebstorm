@@ -72,10 +72,14 @@ module.exports.storeData =  function (req, res, nxt) {
             SHIPPING_ZIP: shippingZipCode
         };
 
+        try{Shipping.insertOne(shippingData, function (err, result) {
+            if (err) throw err;
+        });}
+/*
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
         });
-
+*/
         //billing collection operation
         var billingData = {
             _id: billingID,
