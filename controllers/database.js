@@ -73,11 +73,11 @@ module.exports.storeData =  function (req, res, nxt) {
         };
 
 
-/*
+
         Shipping.insertOne(shippingData, function (err, result) {
             if (err) throw err;
         });
-*/
+
         //billing collection operation
         var billingData = {
             _id: billingID,
@@ -92,7 +92,7 @@ module.exports.storeData =  function (req, res, nxt) {
             if (err) throw err;
         });
 */
-        //orders collection operation
+/*        //orders collection operation
         var date = new Date();
         var current_date = (date.getMonth() + date.getDate() + date.getFullYear());
         var ordersData = {
@@ -104,6 +104,7 @@ module.exports.storeData =  function (req, res, nxt) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: product_vector['total']
         };
+*/
 /*
         Orders.insertOne(ordersData, function (err, result) {
             if (err) throw err;
