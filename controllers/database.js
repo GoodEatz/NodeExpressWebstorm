@@ -101,9 +101,9 @@ module.exports.storeData =  function (req, res, nxt) {
             CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
-            DATE: current_date,
-            PRODUCT_VECTOR: product_vector,
-            ORDER_TOTAL: product_vector['total']
+            DATE: date,
+            //PRODUCT_VECTOR: product_vector,
+            //ORDER_TOTAL: product_vector['total']
         };
 
 
