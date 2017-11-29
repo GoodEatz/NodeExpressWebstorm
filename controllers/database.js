@@ -17,21 +17,21 @@ module.exports.storeData =  function (req, result) {
 
     var body = JSON.stringify(req.body);
     var params = JSON.stringify(req.params);
-    var billingName = req.body.billingName;
-    var billingStreet = req.body.billingAddress;
-    var billingCity = req.body.billingCity;
-    var billingState = req.body.billingState;
-    var billingZipCode = req.body.billingZipCode;
-    var shippingStreet = req.body.shippingAddress;
-    var shippingCity = req.body.shippingCity;
-    var shippingState = req.body.shippingState;
-    var shippingZipCode = req.body.shippingZipCode;
-    var email = req.body.email;
-    var product_vector = req.body.products;
-    var cardNumber = req.body.cardNumber;
-    var expirationDate = req.body.expirationDate;
-    var securityCode = req.body.securityCode;
-    var cardType = req.body.CCcompany;
+    var billingName = body.billingName;
+    var billingStreet = body.billingAddress;
+    var billingCity = body.billingCity;
+    var billingState = body.billingState;
+    var billingZipCode = body.billingZipCode;
+    var shippingStreet = body.shippingAddress;
+    var shippingCity = body.shippingCity;
+    var shippingState = body.shippingState;
+    var shippingZipCode = body.shippingZipCode;
+    var email = body.email;
+    var product_vector = body.products;
+    var cardNumber = body.cardNumber;
+    var expirationDate = body.expirationDate;
+    var securityCode = body.securityCode;
+    var cardType = body.CCcompany;
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
         if(err) throw err;
@@ -41,7 +41,7 @@ module.exports.storeData =  function (req, result) {
         var shippingID = Math.floor((Math.random() * 10000000) + 1);
         var ordersID = Math.floor((Math.random() * 10000000) + 1);
 
-        //get collection of orders
+        //get database collections
         var Orders = db.collection('ORDERS');
         var Customers = db.collection('CUSTOMERS');
         var Billing = db.collection('BILLING');

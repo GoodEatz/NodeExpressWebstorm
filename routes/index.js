@@ -12,30 +12,10 @@ router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
 router.use(upload.array());
 
-//LOAD the various controllers
+//LOAD the controller
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb
 
-/*
-router.post('/storeData', function (req, res) {
-    var body = JSON.stringify(req.body);
-    var params = JSON.stringify(req.params);
-    var billingName = req.body.billingName;
-    var billingStreet = req.body.billingAddress;
-    var billingCity = req.body.billingCity;
-    var billingState = req.body.billingState;
-    var billingZipCode = req.body.billingZipCode;
-    var shippingStreet = req.body.shippingAddress;
-    var shippingCity = req.body.shippingCity;
-    var shippingState = req.body.shippingState;
-    var shippingZipCode = req.body.shippingZipCode;
-    var email = req.body.email;
-    var product_vector = req.body.products;
-    var cardNumber = req.body.cardNumber;
-    var expirationDate = req.body.expirationDate;
-    var securityCode = req.body.securityCode;
-    var cardType = req.body.CCcompany;
-})
-*/
+
 //CODE to route /storeData to appropriate  Controller function
 router.post('/storeData', controllerMongoCollection.storeData);
 
