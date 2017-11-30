@@ -28,6 +28,7 @@ module.exports.storeData =  function (req, res, nxt) {
     var shippingZipCode = req.body.shippingZipCode;
     var email = req.body.email;
     var product_vector = req.body.products;
+    var orderTotal = req.body.orderTotal;
     var cardNumber = req.body.cardNumber;
     var expirationDate = req.body.expirationDate;
     var securityCode = req.body.securityCode;
@@ -101,9 +102,9 @@ module.exports.storeData =  function (req, res, nxt) {
             CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
-            DATE: current_date
+            DATE: current_date,
             //PRODUCT_VECTOR: product_vector //Shows NULL in the database
-            //ORDER_TOTAL: product_vector['total']
+            ORDER_TOTAL: orderTotal
         };
 
 
